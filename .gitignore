@@ -1,5 +1,5 @@
 # stuffs that airflow output during runtime
-logs/
+/logs/
 unittests.cfg
 
 # Editors
