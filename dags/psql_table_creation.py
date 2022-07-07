@@ -38,14 +38,14 @@ def _process_user(ti):
 
 
 def _store_user(ti):
-    hook = PostgresHook(postgres_conn_id='postgres')
+    hook = PostgresHook(postgres_conn_id="postgres")
     # hook.bulk_load(
-    #     table='users', 
+    #     table='users',
     #     tmp_file='/tmp/processed_user.csv'
     # )
     hook.copy_expert(
-        sql="COPY users FROM STDIN WITH DELIMITER AS ','", 
-        filename='/tmp/processed_user.csv'
+        sql="COPY users FROM STDIN WITH DELIMITER AS ','",
+        filename="/tmp/processed_user.csv",
     )
 
 
@@ -60,9 +60,7 @@ with DAG(
 ) as dag:
 
     create_table = PostgresOperator(
-        task_id="create_table", 
-        sql="psql_create.sql", 
-        postgres_conn_id="postgres"
+        task_id="create_table", sql="psql_create.sql", postgres_conn_id="postgres"
     )
 
     is_api_available = HttpSensor(
@@ -78,17 +76,8 @@ with DAG(
         log_response=True,
     )
 
-    process_user = PythonOperator(
-        task_id="process_user", 
-        python_callable=_process_user
-        )
+    process_user = PythonOperator(task_id="process_user", python_callable=_process_user)
 
-    store_user = PythonOperator(
-        task_id="store_user", 
-        python_callable=_store_user
-        )
-    
-    is_api_available >> [
-        create_table, 
-        extract_user >> process_user
-        ] >> store_user
+    store_user = PythonOperator(task_id="store_user", python_callable=_store_user)
+
+    is_api_available >> [create_table, extract_user >> process_user] >> store_user
