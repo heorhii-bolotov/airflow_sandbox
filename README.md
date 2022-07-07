@@ -8,6 +8,8 @@ docker logs materials_name_of_the_container # troubleshoot container
 # Restart the container
 docker-compose down
 docker-compose up -d
+
+# flower localhost:5555/dashboard
 ```
 
 ## Prerequisites

@@ -1,0 +1,5 @@
+black
+apache-airflow[postgres,google]==2.3.0
+pendulum
+pytest
+pandas
