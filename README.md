@@ -10,5 +10,15 @@ docker-compose down
 docker-compose up -d
 ```
 
+## Prerequisites
+
+Add .env file before running `docker-compose`
+
+```
+AIRFLOW_IMAGE_NAME=apache/airflow:2.3.0
+AIRFLOW_UID=1001
+AIRFLOW_GID=0
+```
+
 ## Troubleshoot
 * [Denied to write to logs](https://stackoverflow.com/questions/59412917/errno-13-permission-denied-when-airflow-tries-to-write-to-logs)

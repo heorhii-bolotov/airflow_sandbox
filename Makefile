@@ -8,3 +8,9 @@ init: docker
 
 docker:
 	wget -O docker-compose.yaml https://airflow.apache.org/docs/apache-airflow/2.3.0/docker-compose.yaml
+
+up: init
+	docker compose up -d
+
+down: 
+	docker compose down
