@@ -38,3 +38,5 @@ smtp_email_from = [your email address]
 
 ## Troubleshoot
 * [Denied to write to logs](https://stackoverflow.com/questions/59412917/errno-13-permission-denied-when-airflow-tries-to-write-to-logs)
+* [Mount sock and change user for running docker operator](https://stackoverflow.com/questions/61186983/airflow-dockeroperator-connect-sock-connectself-unix-socket-filenotfounderror#:~:text=For%20me%20the%20following%20approach%20worked%20to%20get%20it%20run%20on%20my%20local%20machine%3A%20I%20took%20the%20official%20docker%2Dcompose.yaml%20from%20here%3A%20https%3A//github.com/apache/airflow/blob/main/docs/apache%2Dairflow/start/docker%2Dcompose.yaml)
+* Elasticsearch - unresolved
